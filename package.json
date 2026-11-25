@@ -1,0 +1,11 @@
+{
+  "name": "mahkotabaruisolasi-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Modern static website for PT. Mahkota Baru Isolasi",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node build.mjs && python3 -m http.server 8080 --directory dist"
+  }
+}
