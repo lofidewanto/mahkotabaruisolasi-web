@@ -10,6 +10,7 @@ const SITE_URL = 'https://mahkotabaruisolasi.co.id';
 const YEAR = new Date().getFullYear();
 // Bump OG_VERSION after changing og-image.jpg so Facebook/LinkedIn fetch the new one.
 const OG_VERSION = 1;
+const PROFILE_PDF = 'Company-Profile-PT-Mahkota-Baru-Isolasi.pdf';
 const OG_IMAGE = `${SITE_URL}/images/brand/og-image.jpg?v=${OG_VERSION}`;
 
 // ---------- helpers ----------
@@ -153,6 +154,7 @@ const footer = () => `
           <li>${icon('phone')}<a href="${wa()}" target="_blank" rel="noopener">${company.phone}</a></li>
           <li>${icon('mail')}<a href="mailto:${company.email}">${company.email}</a></li>
           <li>${icon('clock')}<span>${company.hours}</span></li>
+          <li>${icon('doc')}<a href="${PROFILE_PDF}" download>Company Profile (PDF)</a></li>
         </ul>
       </div>
     </div>
@@ -353,6 +355,7 @@ const allProducts = [...isolasi, ...insulasi].flatMap((c) => c.items).filter((p,
       <div class="hero__actions">
         <a class="btn btn--wa" href="${wa('Halo PT. Mahkota Baru Isolasi, saya ingin bertanya.')}" target="_blank" rel="noopener">${waIcon} Konsultasi via WhatsApp</a>
         <a class="btn btn--outline" href="mailto:${company.email}">${icon('mail')} Kirim Pesan</a>
+        <a class="btn btn--outline" href="${PROFILE_PDF}" download>${icon('doc')} Unduh Company Profile (PDF)</a>
       </div>
     </div>
   </div>
@@ -546,6 +549,7 @@ for (const p of pages) await writeFile(`${OUT}/${p.path}`, p.html);
 await writeFile(`${OUT}/sitemap.xml`, `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((p) => `  <url><loc>${SITE_URL}/${p.path === 'index.html' ? '' : p.path}</loc></url>`).join('\n')}\n</urlset>\n`);
 await cp('src/images/brand/favicon.ico', `${OUT}/favicon.ico`);
 await cp('src/apache/.htaccess', `${OUT}/.htaccess`);
+await cp(`company-profile/${PROFILE_PDF}`, `${OUT}/${PROFILE_PDF}`);
 await writeFile(`${OUT}/site.webmanifest`, JSON.stringify({
   name: company.name,
   short_name: 'Mahkota Baru',

@@ -83,7 +83,10 @@ node company-profile/build-profile.mjs
 This needs Google Chrome, which it runs headless to print the PDF. On macOS it uses the default install
 path. Elsewhere, set the path to Chrome, e.g. `CHROME=/usr/bin/google-chrome node company-profile/build-profile.mjs`.
 
-The profile is not part of the website build or the zip download.
+`npm run build` copies the PDF into the website (`dist/Company-Profile-PT-Mahkota-Baru-Isolasi.pdf`), so it is
+also in the zip download. Visitors get it from the "Unduh Company Profile (PDF)" button in the home page's
+"Layanan Kami" section and from the footer's contact column on every page. After regenerating the PDF, run
+`npm run build` again so the website gets the new version.
 
 ## Download as a zip (Apache / any web server)
 
