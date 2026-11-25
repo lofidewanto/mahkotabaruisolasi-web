@@ -61,6 +61,18 @@ the page in the [Facebook Sharing Debugger](https://developers.facebook.com/tool
   on your host, or add redirects from the old paths.
 - The old site's language switcher (EN/DE) wasn't carried over, because only the Indonesian content was copied.
 
+## Download as a zip (Apache / any web server)
+
+```bash
+npm run zip       # builds the site and writes ./mahkotabaruisolasi-web.zip
+```
+
+Unzip it into the web root (e.g. `/var/www/html`, `htdocs`, or cPanel's `public_html`) or into a subfolder.
+All links are relative, so it works in either. The zip includes an `.htaccess` (from `src/apache/.htaccess`)
+that enables clean URLs (`/isolasi` → `isolasi.html`), compression and browser caching. These need
+`AllowOverride All` for that directory and the modules `mod_rewrite`, `mod_deflate` and `mod_expires`.
+Without them the site still works, just without those extras.
+
 ## Deployment
 
 Pushing to `main` builds the site with GitHub Actions (`.github/workflows/pages.yml`) and publishes it to

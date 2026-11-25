@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "node build.mjs",
-    "serve": "node build.mjs && python3 -m http.server 8080 --directory dist"
+    "serve": "node build.mjs && python3 -m http.server 8080 --directory dist",
+    "zip": "node build.mjs && rm -f mahkotabaruisolasi-web.zip && cd dist && zip -rqX ../mahkotabaruisolasi-web.zip . -x '.DS_Store' '*/.DS_Store'"
   }
 }

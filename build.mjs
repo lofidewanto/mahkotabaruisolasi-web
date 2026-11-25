@@ -545,6 +545,7 @@ await writeFile(`${OUT}/assets/js/search-index.js`, `window.SEARCH_INDEX=${JSON.
 for (const p of pages) await writeFile(`${OUT}/${p.path}`, p.html);
 await writeFile(`${OUT}/sitemap.xml`, `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((p) => `  <url><loc>${SITE_URL}/${p.path === 'index.html' ? '' : p.path}</loc></url>`).join('\n')}\n</urlset>\n`);
 await cp('src/images/brand/favicon.ico', `${OUT}/favicon.ico`);
+await cp('src/apache/.htaccess', `${OUT}/.htaccess`);
 await writeFile(`${OUT}/site.webmanifest`, JSON.stringify({
   name: company.name,
   short_name: 'Mahkota Baru',
