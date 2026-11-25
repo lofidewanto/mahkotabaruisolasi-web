@@ -61,6 +61,30 @@ the page in the [Facebook Sharing Debugger](https://developers.facebook.com/tool
   on your host, or add redirects from the old paths.
 - The old site's language switcher (EN/DE) wasn't carried over, because only the Indonesian content was copied.
 
+## Company profile (PDF)
+
+`company-profile/` holds the company profile in Bahasa Indonesia (A4, 12 pages):
+[`Company-Profile-PT-Mahkota-Baru-Isolasi.pdf`](company-profile/Company-Profile-PT-Mahkota-Baru-Isolasi.pdf).
+It is generated from the same data files as the website (`src/data/*.mjs`), so company info, services
+and products stay in sync.
+
+| File | Purpose |
+|---|---|
+| `build-profile.mjs` | Builds the profile HTML from the site data, then prints it to PDF |
+| `company-profile.html` | Generated HTML (open it in a browser to preview) |
+| `profile.css` | Print layout and styles of the profile |
+
+To regenerate it after changing content:
+
+```bash
+node company-profile/build-profile.mjs
+```
+
+This needs Google Chrome, which it runs headless to print the PDF. On macOS it uses the default install
+path. Elsewhere, set the path to Chrome, e.g. `CHROME=/usr/bin/google-chrome node company-profile/build-profile.mjs`.
+
+The profile is not part of the website build or the zip download.
+
 ## Download as a zip (Apache / any web server)
 
 ```bash
