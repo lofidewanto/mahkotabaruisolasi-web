@@ -129,7 +129,13 @@
         if (e.isIntersecting) {
           setActive(e.target.dataset.section);
           const chip = chips.find((c) => c.dataset.cat === e.target.dataset.section);
-          chip && chip.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+          // Scroll only the chip bar horizontally. scrollIntoView() would also scroll the
+          // window, cancelling the user's own scroll and making the page "stick".
+          const bar = chip && chip.parentElement;
+          if (bar) {
+            const left = chip.offsetLeft - bar.offsetLeft - (bar.clientWidth - chip.offsetWidth) / 2;
+            bar.scrollTo({ left, behavior: reduceMotion ? 'auto' : 'smooth' });
+          }
         }
       }), { rootMargin: '-45% 0px -50% 0px' });
       sections.forEach((s) => so.observe(s));
