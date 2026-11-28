@@ -103,4 +103,4 @@ Without them the site still works, just without those extras.
 ## Deployment
 
 Pushing to `main` builds the site with GitHub Actions (`.github/workflows/pages.yml`) and publishes it to
-GitHub Pages: https://lofidewanto.github.io/mahkotabaruisolasi-web/
+GitHub Pages: https://mahkotabaruisolasi.github.io/mahkotabaruisolasi-web/
